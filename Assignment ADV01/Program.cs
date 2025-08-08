@@ -28,7 +28,6 @@ namespace Assignment_ADV01
             //Console.WriteLine(result);
             #endregion
 
-
             #region Task2
 
             MultiBox<string> stringBox = new MultiBox<string>();
@@ -49,6 +48,20 @@ namespace Assignment_ADV01
 
 
 
+            #endregion
+
+
+            #region Q1
+            Range<int> intRange = new Range<int>(10, 20);
+
+            Console.WriteLine(intRange.IsInRange(15)); // True
+            Console.WriteLine(intRange.IsInRange(25)); // False
+
+            Console.WriteLine("Length: " + intRange.Length()); // 10
+
+            Range<double> doubleRange = new Range<double>(5.5, 10.5);
+            Console.WriteLine(doubleRange.IsInRange(7.5)); // True
+            Console.WriteLine("Length: " + doubleRange.Length()); // 5.0 
             #endregion
 
         }
