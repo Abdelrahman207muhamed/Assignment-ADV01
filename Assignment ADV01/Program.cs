@@ -5,6 +5,28 @@ namespace Assignment_ADV01
 {
     internal class Program
     {
+
+
+        #region Q2
+        // Method to reverse ArrayList elements in place
+        static void ReverseList(ArrayList arr)
+        {
+            for (int i = 0; i < arr.Count / 2; i++)
+            {
+                int j = arr.Count - 1 - i;
+                (arr[i], arr[j]) = (arr[j], arr[i]); // tuple swap
+            }
+        }
+        #endregion
+
+        #region Q3
+        static IEnumerable<int> FilterEvens(IEnumerable<int> data)
+        {
+            return data.Where(x => x % 2 == 0);
+        } 
+        #endregion
+
+
         static void Main()
         {
             #region TASK 1
@@ -66,24 +88,66 @@ namespace Assignment_ADV01
             #endregion
 
             #region Q2
-            ArrayList myList = new ArrayList() { 1, 2, 3, 4, 5 };
+            ArrayList items = new ArrayList();
 
-            Console.WriteLine("Before Reverse:");
-            foreach (var item in myList)
+            Console.Write("How many items? ");
+            if (!int.TryParse(Console.ReadLine(), out int n) || n < 0)
             {
-                Console.Write(item + " ");
+                Console.WriteLine("Invalid number!");
+                return;
             }
 
-            ArrayListHelper.ReverseArrayList(myList);
+            Console.WriteLine("Enter your items:");
+            for (int k = 0; k < n; k++)
+                items.Add(Console.ReadLine());
 
-            Console.WriteLine("\nAfter Reverse:");
-            foreach (var item in myList)
-            {
-                Console.Write(item + " ");
-            } 
+            Console.WriteLine("\nBefore reverse:");
+            foreach (var el in items)
+                Console.Write(el + " ");
+            Console.WriteLine();
+
+            ReverseList(items);
+
+            Console.WriteLine("\nAfter reverse:");
+            foreach (var el in items)
+                Console.Write(el + " ");
+            Console.WriteLine();
+
+            ReverseList(items);
+
+            Console.WriteLine("\nAfter reverse:");
+            foreach (var el in items)
+                Console.Write(el + " ");
+            Console.WriteLine();
+
             #endregion
 
+            #region Q3
+            Console.Write("How many numbers? ");
+            if (!int.TryParse(Console.ReadLine(), out int total) || total <= 0)
+            {
+                Console.WriteLine("Invalid input!");
+                return;
+            }
+
+            var inputList = new List<int>();
+
+            Console.WriteLine("Enter numbers:");
+            for (int idx = 0; idx < total; idx++)
+            {
+                if (int.TryParse(Console.ReadLine(), out int val))
+                    inputList.Add(val);
+            }
+
+            var evens = FilterEvens(inputList);
+
+            Console.WriteLine("\nEvens found:");
+            Console.WriteLine(string.Join(" ", evens));
         }
+        #endregion
+
 
     }
+
+    
 } 
